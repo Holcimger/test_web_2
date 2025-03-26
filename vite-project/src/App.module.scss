@@ -1,0 +1,15 @@
+$corporate-bright-green: #94c12e; /* SCSS variables */
+$corporate-bright-blue: #04bbf1;
+$corporate-blue: #1d4370;
+// @import "~bootstrap/scss/bootstrap";
+
+.corporate_border {
+  display: block;
+  height: 18px;
+  background: linear-gradient(
+    to right,
+    $corporate-bright-green,
+    $corporate-bright-blue,
+    $corporate-blue
+  );
+}
