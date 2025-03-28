@@ -1,0 +1,38 @@
+// Use Bootstrap SCSS
+@use "bootstrap" as *;
+
+// _variables.scss
+$card-max-height: 100vh;
+
+// MyCard.module.scss
+
+.myCard {
+  position: relative;
+
+  overflow-y: auto;
+
+  //flex-1 flex justify-center items-center relative overflow-hidden
+  div {
+    // Target the div that contains the SVG
+    svg {
+      // Target the SVG inside the div
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      max-height: 90vh;
+      object-fit: contain;
+      object-fit: cover;
+    }
+  }
+}
+
+.bg-teal-500 {
+  background-color: #04bbf1 !important;
+  border-color: #04bbf1 !important;
+  color: black !important;
+
+  &:hover {
+    background-color: #1d4370 !important; /* Change to the desired hover color */
+    color: white !important; /* Optional: Change text color on hover */
+  }
+}

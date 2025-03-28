@@ -1,0 +1,5 @@
+@use "bootstrap" as *; // Use Bootstrap SCSS
+
+.bg-blue-100 {
+  background-color: $teal-100 !important; /* Set background color */
+}

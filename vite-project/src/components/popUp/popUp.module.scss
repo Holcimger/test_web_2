@@ -1,0 +1,39 @@
+// YourComponent.module.scss
+@use "bootstrap" as *; // Use Bootstrap SCSS
+
+
+.card {
+  position: relative;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-height: 90vh; // Add some margin from the top and bottom
+  overflow-y: auto; // Add scroll if content is too large
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.svgDiv {
+  max-height: 80vh; // Adjust as needed to leave space for other content
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+
+  svg {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.bg-teal-100 {
+  background-color: $teal-100 !important; /* Set background color */
+}
