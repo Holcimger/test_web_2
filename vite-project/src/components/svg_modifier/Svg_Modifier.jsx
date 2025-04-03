@@ -49,9 +49,13 @@ const SvgModifier = ({ data, svg }) => {
       type="image/svg+xml"
       data={svg}
       style={{
-        objectFit: "fill",
+        objectFit: "contain", // Scales SVG down to fit while preserving aspect ratio (might leave gaps)
         backgroundColor: "whitesmoke",
-        height: "100%",
+        height: "100%", // Takes 100% height of the parent div
+        width: "100%", // Add width 100% as well for better scaling
+        maxWidth: "100%", // Ensure it doesn't overflow horizontally
+        maxHeight: "100%", // Ensure it doesn't overflow vertically
+        display: "block", // Helps prevent extra space below inline elements
         borderRadius: "8px",
       }}
     >
