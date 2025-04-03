@@ -8,19 +8,15 @@ $card-max-height: 100vh;
 
 .myCard {
   position: relative;
-
   overflow-y: auto;
 
-  //flex-1 flex justify-center items-center relative overflow-hidden
-  div {
-    // Target the div that contains the SVG
-    svg {
-      // Target the SVG inside the div
+  svg {
+    // Wrap declarations to make behavior explicit
+    & {
       width: 100%;
       max-width: 100%;
       height: auto;
       max-height: 90vh;
-      object-fit: contain;
       object-fit: cover;
     }
   }
@@ -30,9 +26,9 @@ $card-max-height: 100vh;
   background-color: #04bbf1 !important;
   border-color: #04bbf1 !important;
   color: black !important;
+}
 
-  &:hover {
-    background-color: #1d4370 !important; /* Change to the desired hover color */
-    color: white !important; /* Optional: Change text color on hover */
-  }
+.bg-teal-500:hover {
+  background-color: #1d4370 !important; /* Change to the desired hover color */
+  color: white !important; /* Optional: Change text color on hover */
 }

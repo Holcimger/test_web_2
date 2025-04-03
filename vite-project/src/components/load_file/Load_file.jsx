@@ -6,9 +6,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
+import CloseButton from "react-bootstrap/CloseButton";
 
 import Card from "react-bootstrap/Card";
-import Badge from "react-bootstrap/Badge";
 
 const Load_file = ({ show, handleClose, onFileLoaded }) => {
   const handleFileUpload = (event) => {
@@ -48,16 +48,11 @@ const Load_file = ({ show, handleClose, onFileLoaded }) => {
         style={{ zIndex: 1050, minWidth: "40vw", minHeight: "20vw" }} // Ensure it's on top
       >
         <Row>
-          <Col xs={{ span: 1, offset: 11 }} className="text-end">
-            <Badge
-              bg="danger"
-              aria-label="Close"
-              type="button"
-              className="t-1"
+          <Col xs={{ span: 1, offset: 11 }} className={`text-end`}>
+            <CloseButton
               onClick={handleClose}
-            >
-              X
-            </Badge>
+              className={`${style["bg-red-200"]} fw-bold text-end`}
+            />
           </Col>
         </Row>
         <Row className="flex-grow-1 justify-content-center align-items-center">

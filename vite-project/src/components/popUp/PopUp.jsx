@@ -4,7 +4,8 @@ import style from "./PopUp.module.scss";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Badge from "react-bootstrap/Badge";
+
+import CloseButton from "react-bootstrap/CloseButton";
 
 const PopUp = ({ show, handleClose, data, num, img }) => {
   if (show) {
@@ -17,30 +18,33 @@ const PopUp = ({ show, handleClose, data, num, img }) => {
     img && (
       <Container
         className={`position-absolute top-50 start-50 translate-middle p-4 shadow-lg rounded ${style["bg-teal-100"]}`}
-        style={{ zIndex: 1050, minWidth: "50vw", minHeight: "90vh" }}
+        style={{ zIndex: 1050, minWidth: "50vw", minHeight: "99vh" }}
       >
-        <Row className="">
-          <Col xs={{ span: 11, offset: 0 }} className="text-center ">
-            <h2>Datos de la pieza Nº {num}</h2>
+        <Row className="d-flex border-bottom border-dark border-3 space-around align-items-stretch align-items-end justify-content-between">
+          <Col className="align-self-end" xs={{ span: 4, offset: 0 }}>
+            <h2>{`${data[0]["Descripción"]}`}</h2>
           </Col>
-          <Col xs={{ span: 1, offset: 0 }} className="text-center ">
-            <Badge
-              bg="danger"
-              aria-label="Close"
-              type="button"
-              className="t-1"
+
+          <Col className="align-self-end">
+            <h4>{`Diseño N°: ${data[0]["Diseño N°"]}`}</h4>
+          </Col>
+
+          <Col className="align-self-end">
+            <h4>{`Pos. ${num}`}</h4>
+          </Col>
+
+          <Col
+            xs={{ span: 1, offset: 0 }}
+            className="text-end"
+            style={{ position: "relative" }} // Set relative positioning
+          >
+            <CloseButton
               onClick={handleClose}
-            >
-              X
-            </Badge>
+              className={`${style["bg-red-200"]} fw-bold text-end`}
+            />
           </Col>
         </Row>
 
-        <Row className={`flex border-bottom border-dark border-3`}>
-          <Col xs={{ span: 11, offset: 0 }} className="text-center">
-            <h4>{`Diseño N°: ${data[0]["Diseño N°"]}`}</h4>
-          </Col>
-        </Row>
         <Row className={`flex`}>
           <Col>
             <div
