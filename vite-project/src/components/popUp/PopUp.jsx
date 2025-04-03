@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import SvgModifier from "../svg_modifier/Svg_Modifier";
 import style from "./PopUp.module.scss";
 import Container from "react-bootstrap/Container";
@@ -17,7 +17,7 @@ const PopUp = ({ show, handleClose, data, num, img }) => {
     show &&
     img && (
       <Container
-        className={`position-absolute top-50 start-50 translate-middle p-4 shadow-lg rounded ${style["bg-teal-100"]}`}
+        className={`position-absolute top-50 start-50 translate-middle p-4 pb-0 shadow-lg rounded ${style["bg-blue-100"]}`}
         style={{ zIndex: 1050, minWidth: "50vw", minHeight: "99vh" }}
       >
         <Row className="d-flex border-bottom border-dark border-3 space-around align-items-stretch align-items-end justify-content-between">
@@ -48,8 +48,14 @@ const PopUp = ({ show, handleClose, data, num, img }) => {
         <Row className={`flex`}>
           <Col>
             <div
-              className={`${style.svgDiv} `}
-              style={{ height: "100%", width: "auto" }}
+              // className={`${style.svgDiv} `}
+              style={{
+                overflow: "auto",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100%",
+              }}
             >
               <SvgModifier data={data} svg={img} />
             </div>

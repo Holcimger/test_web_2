@@ -49,9 +49,10 @@ const SvgModifier = ({ data, svg }) => {
       type="image/svg+xml"
       data={svg}
       style={{
-        objectFit: "contain",
-        maxHeight: "100%",
-        backgroundColor: "antiquewhite",
+        objectFit: "fill",
+        backgroundColor: "whitesmoke",
+        height: "100%",
+        borderRadius: "8px",
       }}
     >
       Your browser does not support SVGs
