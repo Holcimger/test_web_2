@@ -2,10 +2,10 @@
 
 import React, { useRef, useEffect } from "react";
 
-const getColor = (cantidad) => {
-  if (cantidad == 1) return "#FFA500";
-  else if (cantidad > 1) return "	#008000";
-  return "#FF0000";
+const getColor = (cantidadDisponible) => {
+  if (cantidadDisponible == 2) return "rgb(255, 230, 0)";
+  else if (cantidadDisponible > 2) return "rgb(83, 212, 8)";
+  else return "rgb(228, 17, 17)";
 };
 
 const SvgModifier = ({ data, svg }) => {

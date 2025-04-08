@@ -9,7 +9,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Stack from "react-bootstrap/Stack";
 
-function Home({ data, popUps, setPopUps, setPopUpStates, toggle }) {
+function Home({ toggle }) {
   const [svgContent, setSvgContent] = useState("");
 
   useEffect(() => {
@@ -97,6 +97,18 @@ function Home({ data, popUps, setPopUps, setPopUpStates, toggle }) {
             >
               10
             </Button>
+            <Button
+              className={`${styles["bg-teal-500"]}  fw-bold`}
+              onClick={toggle(11)}
+            >
+              11
+            </Button>
+            <Button
+              className={`${styles["bg-teal-500"]}  fw-bold`}
+              onClick={toggle(12)}
+            >
+              12
+            </Button>
           </Stack>
         </Col>
         <Col
@@ -108,63 +120,75 @@ function Home({ data, popUps, setPopUps, setPopUpStates, toggle }) {
           >
             <Button
               className={`${styles["bg-teal-500"]}  fw-bold `}
-              onClick={toggle(1)}
-            >
-              11
-            </Button>
-            <Button
-              className={`${styles["bg-teal-500"]}  fw-bold`}
-              onClick={toggle(2)}
-            >
-              12
-            </Button>
-            <Button
-              className={`${styles["bg-teal-500"]}  fw-bold`}
-              onClick={toggle(3)}
+              onClick={toggle(13)}
             >
               13
             </Button>
             <Button
               className={`${styles["bg-teal-500"]}  fw-bold`}
-              onClick={toggle(4)}
+              onClick={toggle(14)}
             >
               14
             </Button>
             <Button
               className={`${styles["bg-teal-500"]}  fw-bold`}
-              onClick={toggle(5)}
+              onClick={toggle(15)}
             >
               15
             </Button>
             <Button
               className={`${styles["bg-teal-500"]}  fw-bold`}
-              onClick={toggle(6)}
+              onClick={toggle(16)}
             >
               16
             </Button>
             <Button
               className={`${styles["bg-teal-500"]}  fw-bold`}
-              onClick={toggle(7)}
+              onClick={toggle(17)}
             >
               17
             </Button>
             <Button
               className={`${styles["bg-teal-500"]}  fw-bold`}
-              onClick={toggle(8)}
+              onClick={toggle(18)}
             >
               18
             </Button>
             <Button
               className={`${styles["bg-teal-500"]}  fw-bold`}
-              onClick={toggle(9)}
+              onClick={toggle(19)}
             >
               19
             </Button>
             <Button
               className={`${styles["bg-teal-500"]}  fw-bold`}
-              onClick={toggle(10)}
+              onClick={toggle(20)}
             >
               20
+            </Button>
+            <Button
+              className={`${styles["bg-teal-500"]}  fw-bold`}
+              onClick={toggle(21)}
+            >
+              21
+            </Button>
+            <Button
+              className={`${styles["bg-teal-500"]}  fw-bold`}
+              onClick={toggle(22)}
+            >
+              22
+            </Button>
+            <Button
+              className={`${styles["bg-teal-500"]}  fw-bold`}
+              onClick={toggle(23)}
+            >
+              23
+            </Button>
+            <Button
+              className={`${styles["bg-teal-500"]}  fw-bold`}
+              onClick={toggle(24)}
+            >
+              24
             </Button>
           </Stack>
         </Col>

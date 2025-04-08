@@ -1,77 +1,97 @@
-import React from "react";
+import React, { useState } from "react";
 import SvgModifier from "../svg_modifier/Svg_Modifier";
-import style from "./PopUp.module.scss";
+import styles from "./PopUp.module.scss";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+import Modal from "react-bootstrap/Modal";
+
 import CloseButton from "react-bootstrap/CloseButton";
 
 const PopUp = ({ show, handleClose, data, num, img }) => {
+  const values = [true];
+  const [fullscreen, setFullscreen] = useState(true);
+  function handleShow(breakpoint) {
+    setFullscreen(breakpoint);
+    setShow(true);
+  }
+
   if (show) {
     console.log(`El Pop Up abierto es el num: `, num);
     console.log("data :>> \n", data);
   }
 
+  function handleShow(breakpoint) {
+    setFullscreen(breakpoint);
+    setShow(true);
+  }
+
   return (
     show &&
     img && (
-      <Container
-        className={`position-absolute top-50 start-50 translate-middle p-4 pb-0 shadow-lg rounded ${style["bg-blue-100"]} d-flex flex-column`} // Added d-flex flex-column
-        style={{
-          zIndex: 1050,
-          minWidth: "50vw",
-          height: "99vh",
-          overflow: "hidden",
-        }}
-      >
-        <Row className="d-flex border-bottom border-dark border-3 space-around align-items-end justify-content-between pb-2">
-          <Col className="align-self-end" xs={{ span: 4, offset: 0 }}>
-            <h2>{`${data[0]["Descripción"]}`}</h2>
-          </Col>
-          <Col className="align-self-end">
-            <h4>{`Diseño N°: ${data[0]["Diseño N°"]}`}</h4>
-          </Col>
-          <Col className="align-self-end">
-            <h4>{`Pos. ${num}`}</h4>
-          </Col>
-          <Col
-            xs={{ span: 1, offset: 0 }}
-            className="text-end align-self-center" // Adjusted alignment slightly
-            style={{ position: "relative" }}
+      <>
+        <Modal
+          show={show}
+          onHide={handleClose}
+          centered
+          dialogClassName={styles["modal-tall-wide"]} // Use class for sizing/styling
+          size="xl"
+        >
+          <Modal.Header >
+            <Container fluid className="d-flex flex-column">
+              {/* --- Top Row (Header Info) --- */}
+              {/* Row won't shrink, columns size automatically */}
+              <Row className="d-flex border-bottom border-dark border-3 align-items-end flex-shrink-0">
+                {/* Use col-auto for automatic sizing based on content */}
+                <Col className="align-self-end col-auto">
+                  {/* Ensure data and data[0] exist before accessing */}
+                  <h2>{`${data?.[0]?.["Descripción"] || "No Description"}`}</h2>
+                </Col>
+                <Col className="align-self-end col-auto">
+                  <h4>{`Diseño N°: ${data?.[0]?.["Diseño N°"] || "N/A"}`}</h4>
+                </Col>
+                <Col className="align-self-end col-auto">
+                  <h4>{`Pos. ${num}`}</h4>
+                </Col>
+                {/* Use col-auto and ms-auto to push the button to the right */}
+                <Col className="text-end align-self-center col-auto ms-auto">
+                  <CloseButton
+                    onClick={handleClose}
+                    className={`${styles ? styles["bg-red-200"] : ""} fw-bold`}
+                  />
+                </Col>
+              </Row>
+            </Container>
+          </Modal.Header>
+          {/* Modal Content */}
+          <Modal.Body
+            // Removed inline style for position/width/height/overflow/zIndex
+            // Kept necessary classes for background, padding, layout
+            className={`shadow-xl rounded d-flex flex-column ${styles["bg-blue-100"]}`}
+            // Removed fullscreen prop
           >
-            <CloseButton
-              onClick={handleClose}
-              className={`${style["bg-red-200"]} fw-bold`} // Removed text-end here
-            />
-          </Col>
-        </Row>
+            <Container>
+              {/* Container takes full height of the flex body */}
 
-        {/* --- Bottom Row (SVG Content) --- */}
-        {/* flex-grow-1 makes this row take remaining vertical space */}
-        {/* h-100 ensures the row itself tries to be full height relative to the growing space */}
-        {/* overflow-hidden can prevent unexpected scrollbars within the row */}
-        <Row className={`flex-grow-1 h-100 overflow-hidden`}>
-          {/* d-flex h-100 ensures Col takes full height and manages its child flex item */}
-          <Col className="d-flex flex-column h-100">
-            {/* The div now correctly expands because its parents (Col, Row) have height */}
-            
-            <div
-              style={{
-                overflow: "auto", // Keep scroll if SVG is larger than div
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "100%", // Takes height from Col                
-                // backgroundColor: 'lightcoral', // Temporary BG to see the div bounds
-              }}
-            >
-              
-              <SvgModifier data={data} svg={img} />
-            </div>
-          </Col>
-        </Row>
-      </Container>
+              {/* --- Bottom Row (SVG Content) --- */}
+              {/* This row grows to fill remaining space and hides overflow */}
+              <Row className="flex-grow-1 overflow-hidden pt-3">
+                {" "}
+                {/* Added some top padding */}
+                {/* Col fills the row */}
+                <Col className="d-flex flex-column h-100">
+                  {/* SVG container handles centering and scaling */}
+                  <div className="svg-container">
+                    {/* Ensure SvgModifier renders an <svg> tag */}
+                    <SvgModifier data={data} svg={img} />
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+          </Modal.Body>
+        </Modal>
+      </>
     )
   );
 };

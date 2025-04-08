@@ -10,7 +10,15 @@ import Container from "react-bootstrap/Container";
 import styles from "./App.module.scss";
 
 import Dibujo_1 from "/Dibujo_1.svg";
+import Dibujo_2 from "/Dibujo_2.svg";
+import Dibujo_3 from "/Dibujo_3.svg";
+import Dibujo_4 from "/Dibujo_4.svg";
 import Dibujo_5 from "/Dibujo_5.svg";
+import Dibujo_6 from "/Dibujo_6.svg";
+import Dibujo_7 from "/Dibujo_7.svg";
+import Dibujo_8 from "/Dibujo_8.svg";
+import Dibujo_9 from "/Dibujo_9.svg";
+import Dibujo_10 from "/Dibujo_10.svg";
 
 function App() {
   const [showExcel, setShowExcel] = useState(true);
@@ -19,12 +27,42 @@ function App() {
 
   const [popUpStates, setPopUpStates] = useState({
     show_1: false,
+    show_2: false,
+    show_3: false,
+    show_4: false,
     show_5: false,
+    show_6: false,
+    show_7: false,
+    show_8: false,
+    show_9: false,
+    show_10: false,
+    show_11: false,
+    show_12: false,
+    show_13: false,
+    show_14: false,
+    show_15: false,
+    show_16: false,
+    show_17: false,
+    show_18: false,
+    show_19: false,
+    show_20: false,
+    show_21: false,
+    show_22: false,
+    show_23: false,
+    show_24: false,
     // Add more as needed
   });
   const dibujos = {
     1: Dibujo_1,
+    2: Dibujo_2,
+    3: Dibujo_3,
+    4: Dibujo_4,
     5: Dibujo_5,
+    6: Dibujo_6,
+    7: Dibujo_7,
+    8: Dibujo_8,
+    9: Dibujo_9,
+    10: Dibujo_10,
   };
 
   const toggle = (num) => () => togglePopUpState(`show_${num}`);
@@ -76,13 +114,7 @@ function App() {
 
       <Container fluid className="min-vh-100 p-2  pl-0">
         {/* Home Component */}
-        <Home
-          data={fileData}
-          popUps={popUps}
-          setPopUps={setPopUps}
-          setPopUpStates={setPopUpStates}
-          toggle={toggle}
-        />
+        <Home toggle={toggle} />
         {popUps && popUps.length > 0 ? (
           popUps.map((data, index) => {
             const popUpKey = `${data[0].Posición}`;
